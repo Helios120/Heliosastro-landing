@@ -7,7 +7,6 @@
   <style>
     :root {
       --bg: #06070b;
-      --bg-soft: #0d1018;
       --card: rgba(255,255,255,0.06);
       --line: rgba(255,255,255,0.12);
       --gold: #d7b56d;
@@ -23,9 +22,10 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: Inter, Arial, Helvetica, sans-serif;
       color: var(--text);
       background:
         radial-gradient(circle at 20% 20%, rgba(127,107,255,.16), transparent 28%),
@@ -35,9 +35,8 @@
       overflow-x: hidden;
     }
 
-    .noise,
-    .orb,
     .starfield,
+    .orb,
     .sacred-bg { pointer-events: none; }
 
     .starfield {
@@ -70,20 +69,28 @@
     }
 
     .orb.one {
-      width: 320px; height: 320px;
+      width: 320px;
+      height: 320px;
       background: rgba(127,107,255,.45);
-      top: 8%; left: -60px;
+      top: 8%;
+      left: -60px;
     }
+
     .orb.two {
-      width: 360px; height: 360px;
+      width: 360px;
+      height: 360px;
       background: rgba(86,185,255,.34);
-      top: 38%; right: -80px;
+      top: 38%;
+      right: -80px;
       animation-delay: -3s;
     }
+
     .orb.three {
-      width: 260px; height: 260px;
+      width: 260px;
+      height: 260px;
       background: rgba(240,106,180,.28);
-      bottom: 4%; left: 12%;
+      bottom: 4%;
+      left: 12%;
       animation-delay: -6s;
     }
 
@@ -127,83 +134,25 @@
     }
 
     .logo {
-      width: 44px;
-      height: 44px;
+      width: 52px;
+      height: 52px;
       border-radius: 999px;
       display: grid;
       place-items: center;
       background: radial-gradient(circle, rgba(240,215,154,.15), rgba(215,181,109,.08));
       border: 1px solid rgba(215,181,109,.35);
       box-shadow: inset 0 0 18px rgba(240,215,154,.12), 0 0 22px rgba(215,181,109,.12);
+      overflow: hidden;
+      flex: 0 0 auto;
     }
 
     .logo img {
       width: 100%;
       height: 100%;
       object-fit: contain;
+      display: block;
       border-radius: 999px;
-      display: block;
-    }
-
-    .visual-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      align-items: stretch;
-    }
-
-    .visual-card {
-      position: relative;
-      padding: 24px;
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04));
-      border: 1px solid rgba(255,255,255,.08);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .visual-card h3 {
-      margin: 0 0 12px;
-      font-size: 1.25rem;
-    }
-
-    .visual-card p {
-      margin: 0 0 16px;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    .logo-showcase {
-      display: grid;
-      place-items: center;
-      min-height: 320px;
-      padding: 18px;
-      border-radius: 24px;
-      background: radial-gradient(circle at center, rgba(215,181,109,.10), transparent 55%), rgba(255,255,255,.02);
-      border: 1px solid rgba(255,255,255,.08);
-    }
-
-    .logo-showcase img {
-      width: min(100%, 320px);
-      height: auto;
-      display: block;
-      filter: drop-shadow(0 18px 40px rgba(0,0,0,.35));
-    }
-
-    .brain-frame {
-      border-radius: 24px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.08);
-      background: #000;
-      box-shadow: var(--shadow);
-    }
-
-    .brain-frame iframe {
-      width: 100%;
-      height: 420px;
-      border: 0;
-      display: block;
-      background: #000;
+      background: #fff;
     }
 
     .nav-links {
@@ -220,7 +169,9 @@
       transition: .25s ease;
     }
 
-    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover {
+      color: var(--text);
+    }
 
     .btn,
     .btn-secondary {
@@ -244,15 +195,15 @@
       box-shadow: 0 12px 32px rgba(215,181,109,.28);
     }
 
-    .btn:hover,
-    .btn-secondary:hover {
-      transform: translateY(-2px);
-    }
-
     .btn-secondary {
       color: var(--text);
       background: rgba(255,255,255,.04);
       border-color: rgba(255,255,255,.12);
+    }
+
+    .btn:hover,
+    .btn-secondary:hover {
+      transform: translateY(-2px);
     }
 
     .hero {
@@ -326,13 +277,15 @@
 
     .stat strong {
       display: block;
-      font-size: 1.4rem;
+      font-size: 1.1rem;
       margin-bottom: 6px;
     }
 
     .stat span {
       color: var(--muted);
       font-size: .92rem;
+      line-height: 1.5;
+      display: block;
     }
 
     .book-wrap {
@@ -367,14 +320,18 @@
       aspect-ratio: 0.69;
       border-radius: 28px;
       overflow: hidden;
-      background:
-        linear-gradient(180deg, rgba(8,9,12,.12), rgba(8,9,12,.5)),
-        radial-gradient(circle at 50% 22%, rgba(255,244,214,.18), transparent 30%),
-        linear-gradient(145deg, #0d111b, #05070c 60%, #0f1220 100%);
       border: 1px solid rgba(255,255,255,.12);
       box-shadow: 0 30px 90px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.04) inset;
       transform: perspective(1300px) rotateY(-11deg) rotateX(5deg);
       animation: levitate 6s ease-in-out infinite;
+      background: #111;
+    }
+
+    .book img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     @keyframes levitate {
@@ -382,70 +339,8 @@
       50% { transform: perspective(1300px) rotateY(-9deg) rotateX(4deg) translateY(-10px); }
     }
 
-    .book::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at center, transparent 0 13%, rgba(215,181,109,.36) 13.4%, transparent 13.8%),
-        radial-gradient(circle at 50% 50%, transparent 0 22%, rgba(215,181,109,.26) 22.4%, transparent 22.8%),
-        radial-gradient(circle at 50% 50%, transparent 0 31%, rgba(215,181,109,.20) 31.4%, transparent 31.8%),
-        radial-gradient(circle at 50% 50%, transparent 0 40%, rgba(215,181,109,.15) 40.4%, transparent 40.8%);
-      opacity: .85;
-    }
-
-    .book::after {
-      content: "";
-      position: absolute;
-      inset: 18px;
-      border-radius: 22px;
-      border: 1px solid rgba(215,181,109,.18);
-    }
-
-    .book-inner {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 34px 28px;
-      z-index: 2;
-    }
-
-    .book-kicker {
-      color: var(--gold-2);
-      text-transform: uppercase;
-      letter-spacing: .18em;
-      font-size: .78rem;
-    }
-
-    .book-title {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(2rem, 4vw, 3.4rem);
-      line-height: .95;
-      margin: 0;
-    }
-
-    .book-sub {
-      color: #ddd2bf;
-      line-height: 1.55;
-      font-size: .97rem;
-      max-width: 260px;
-    }
-
-    .book-author {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 12px;
-      color: #d9d1c3;
-      font-size: .88rem;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-    }
-
     .section {
-      padding: 40px 0;
+      padding: 44px 0;
     }
 
     .section-title {
@@ -504,6 +399,7 @@
       border: 1px solid rgba(215,181,109,.18);
       margin-bottom: 16px;
       color: var(--gold-2);
+      font-size: 24px;
     }
 
     .card h3 {
@@ -512,12 +408,94 @@
     }
 
     .card p,
-    .card li { color: var(--muted); line-height: 1.7; }
+    .card li {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .visual-grid,
+    .split,
+    .quote-grid {
+      display: grid;
+      gap: 22px;
+    }
+
+    .visual-grid {
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+    }
+
+    .visual-card,
+    .pricing,
+    .quote {
+      position: relative;
+      padding: 24px;
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04));
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .visual-card h3,
+    .pricing h3 {
+      margin: 0 0 12px;
+      font-size: 1.25rem;
+    }
+
+    .visual-card p,
+    .pricing p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .logo-showcase {
+      display: grid;
+      place-items: center;
+      min-height: 320px;
+      padding: 18px;
+      border-radius: 24px;
+      background: radial-gradient(circle at center, rgba(215,181,109,.10), transparent 55%), rgba(255,255,255,.02);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .logo-showcase img {
+      width: min(100%, 320px);
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 18px 40px rgba(0,0,0,.35));
+      background: #fff;
+      border-radius: 18px;
+    }
+
+    .brain-frame,
+    .software-wrap {
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.08);
+      background: #000;
+      box-shadow: var(--shadow);
+    }
+
+    .brain-frame iframe,
+    .software-wrap iframe {
+      width: 100%;
+      border: 0;
+      display: block;
+      background: #000;
+    }
+
+    .brain-frame iframe {
+      height: 420px;
+    }
+
+    .software-wrap iframe {
+      height: 760px;
+    }
 
     .split {
-      display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 22px;
       align-items: stretch;
     }
 
@@ -526,41 +504,8 @@
       padding-left: 20px;
     }
 
-    .list li { margin-bottom: 12px; }
-
-    .quote-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .quote {
-      padding: 24px;
-      border-radius: 22px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.08);
-      box-shadow: var(--shadow);
-    }
-
-    .quote p {
-      margin: 0 0 18px;
-      line-height: 1.8;
-      color: #ece6dc;
-    }
-
-    .quote strong {
-      font-size: .95rem;
-      color: var(--gold-2);
-    }
-
-    .pricing {
-      padding: 28px;
-      border-radius: 28px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)),
-        radial-gradient(circle at top right, rgba(215,181,109,.18), transparent 35%);
-      border: 1px solid rgba(215,181,109,.24);
-      box-shadow: var(--shadow);
+    .list li {
+      margin-bottom: 12px;
     }
 
     .pricing .price {
@@ -571,7 +516,7 @@
     }
 
     .pricing .price strong {
-      font-size: 3rem;
+      font-size: 2.2rem;
       line-height: 1;
     }
 
@@ -583,6 +528,21 @@
       color: var(--muted);
       font-size: .92rem;
       line-height: 1.7;
+    }
+
+    .quote-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .quote p {
+      margin: 0 0 18px;
+      line-height: 1.8;
+      color: #ece6dc;
+    }
+
+    .quote strong {
+      font-size: .95rem;
+      color: var(--gold-2);
     }
 
     .cta-box {
@@ -598,8 +558,17 @@
       text-align: center;
     }
 
-    .cta-box h2 { margin: 0 0 12px; font-size: clamp(2rem, 4vw, 3.4rem); }
-    .cta-box p { margin: 0 auto 22px; max-width: 760px; color: var(--muted); line-height: 1.8; }
+    .cta-box h2 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+    }
+
+    .cta-box p {
+      margin: 0 auto 22px;
+      max-width: 760px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
 
     footer {
       padding: 34px 0 56px;
@@ -621,27 +590,71 @@
 
     @media (max-width: 980px) {
       .hero,
-      .split,
       .grid-3,
+      .visual-grid,
+      .split,
       .quote-grid,
-      .visual-grid {
+      .hero-stats {
         grid-template-columns: 1fr;
       }
-      .hero { padding-top: 44px; }
-      .book-wrap { min-height: 460px; order: -1; }
-      .hero-stats { grid-template-columns: 1fr; }
-      .nav { align-items: flex-start; }
-      .nav-links { justify-content: flex-end; }
+
+      .hero {
+        padding-top: 44px;
+      }
+
+      .book-wrap {
+        min-height: 460px;
+        order: -1;
+      }
+
+      .software-wrap iframe {
+        height: 620px;
+      }
     }
 
     @media (max-width: 640px) {
-      .container { width: min(100% - 20px, 1180px); }
-      .nav { flex-direction: column; align-items: stretch; }
-      .nav-links { justify-content: space-between; gap: 12px; }
-      .hero-actions { flex-direction: column; }
-      .btn, .btn-secondary { width: 100%; }
-      .card, .quote, .pricing, .cta-box { padding: 20px; }
-      .book { width: min(320px, 88vw); }
+      .container {
+        width: min(100% - 20px, 1180px);
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .nav-links {
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn,
+      .btn-secondary {
+        width: 100%;
+      }
+
+      .card,
+      .visual-card,
+      .pricing,
+      .quote,
+      .cta-box {
+        padding: 20px;
+      }
+
+      .book {
+        width: min(320px, 88vw);
+      }
+
+      .brain-frame iframe {
+        height: 360px;
+      }
+
+      .software-wrap iframe {
+        height: 560px;
+      }
     }
   </style>
 </head>
@@ -654,15 +667,16 @@
   <header>
     <div class="container nav">
       <div class="brand">
-        <div class="logo" aria-hidden="true">
+        <div class="logo">
           <img src="asset/logo-heliosastro.png" alt="Logo Helios Astro">
         </div>
         <span>Helios Astro</span>
       </div>
+
       <nav class="nav-links">
         <a href="#livre">Le livre</a>
-        <a href="#contenu">Contenu</a>
-        <a href="#avis">Avis</a>
+        <a href="#univers-visuel">Logo & cerveau</a>
+        <a href="#logiciel">Logiciel</a>
         <a href="#acheter">Acheter</a>
       </nav>
     </div>
@@ -674,25 +688,28 @@
         <div class="eyebrow">Livre • Géométrie sacrée • Lumière • Conscience</div>
         <h1><span class="gradient-text">Dieu est la lumière</span><br>La géométrie sacrée révélée</h1>
         <p>
-          Une page de vente premium conçue pour transformer ton univers visuel en machine de conversion.
-          Elle met en scène le livre, structure le message, valorise la promesse et pousse naturellement à l’achat.
+          Et si la réalité visible n’était qu’une partie d’un ordre beaucoup plus profond ?
+          Ce livre vous invite à explorer les structures invisibles de l’univers à travers la lumière,
+          la forme et la géométrie sacrée.
         </p>
+
         <div class="hero-actions">
-          <a class="btn" href="#acheter">Acheter maintenant</a>
-          <a class="btn-secondary" href="#contenu">Voir le contenu</a>
+          <a class="btn" href="https://www.amazon.fr/Dieu-est-lumiere-geometrie-sacr%C4%97e/dp/B08MSNHZDR" target="_blank" rel="noopener noreferrer">Acheter sur Amazon</a>
+          <a class="btn-secondary" href="#univers-visuel">Découvrir l’univers</a>
         </div>
+
         <div class="hero-stats">
           <div class="stat">
-            <strong>Positionnement</strong>
-            <span>Spirituel, visuel, différenciant, mémorable.</span>
+            <strong>Une vision différente</strong>
+            <span>Une approche singulière de la géométrie sacrée, entre perception, symbole et structure.</span>
           </div>
           <div class="stat">
-            <strong>Conversion</strong>
-            <span>Structure claire : intrigue, preuve, désir, action.</span>
+            <strong>Une expérience visuelle</strong>
+            <span>Des formes et des mouvements qui prolongent l’univers du livre au-delà des mots.</span>
           </div>
           <div class="stat">
-            <strong>Intégration</strong>
-            <span>Prête à brancher sur HeliosAstro et PayPal.</span>
+            <strong>Une lecture profonde</strong>
+            <span>Un ouvrage qui relie matière, énergie, conscience et ordre invisible.</span>
           </div>
         </div>
       </div>
@@ -721,17 +738,7 @@
         </div>
 
         <div class="book" id="livre">
-          <div class="book-inner">
-            <div>
-              <div class="book-kicker">Helios Astro</div>
-              <h2 class="book-title">Dieu est<br>la lumière</h2>
-              <p class="book-sub">La fleur de vie, le grand secret de l’univers. Une oeuvre à la croisée de la spiritualité, de la structure et de la vision.</p>
-            </div>
-            <div class="book-author">
-              <span>Thierry Tafani</span>
-              <span>Atefeh Ghasemiyan</span>
-            </div>
-          </div>
+          <img src="asset/livre.jpg" alt="Couverture du livre Dieu est la lumière">
         </div>
       </div>
     </section>
@@ -739,23 +746,26 @@
     <section class="section">
       <div class="container">
         <div class="section-title reveal">
-          <h2>Une oeuvre qui relie symbole, cerveau et géométrie sacrée</h2>
+          <h2>Une œuvre qui relie symbole, cerveau et géométrie sacrée</h2>
           <p>
             L’univers du livre ne se limite pas à une couverture. Il déploie une vision où la lumière,
             les structures du vivant et l’intelligence du cosmos se répondent dans une même architecture.
           </p>
         </div>
+
         <div class="grid-3">
           <article class="card reveal">
             <div class="icon">✦</div>
             <h3>Vision symbolique</h3>
             <p>Chaque forme ouvre vers une lecture plus profonde du réel, où le visible devient la trace d’un ordre caché.</p>
           </article>
+
           <article class="card reveal">
             <div class="icon">◎</div>
             <h3>Corps et conscience</h3>
             <p>Le livre explore les correspondances entre la fleur de vie, le cerveau, les organes et les centres énergétiques.</p>
           </article>
+
           <article class="card reveal">
             <div class="icon">↗</div>
             <h3>Expérience immersive</h3>
@@ -774,12 +784,13 @@
             lumineuse de l’univers. Le logo Helios Astro en devient l’emblème : une force ailée tenant la lumière en son centre.
           </p>
         </div>
+
         <div class="visual-grid">
           <article class="visual-card reveal">
             <h3>Le sceau Helios Astro</h3>
             <p>
               Le lion ailé couronné incarne la puissance, l’élévation et la maîtrise. La sphère lumineuse qu’il porte évoque
-              la fleur de vie, le noyau vibratoire et la connaissance intérieure au coeur de l’oeuvre.
+              la fleur de vie, le noyau vibratoire et la connaissance intérieure au cœur de l’œuvre.
             </p>
             <div class="logo-showcase">
               <img src="asset/logo-heliosastro.png" alt="Logo Helios Astro">
@@ -800,61 +811,80 @@
       </div>
     </section>
 
-    <section class="section" id="contenu">
+    <section class="section" id="logiciel">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>Une visualisation vivante de la géométrie</h2>
+          <p>
+            Ce module vous permet d’observer en mouvement les principes évoqués dans le livre.
+            Ce que vous voyez ici n’est pas une simple animation, mais une traduction visuelle de structures fondamentales.
+          </p>
+        </div>
+
+        <div class="software-wrap reveal">
+          <iframe src="module.html" title="Module logiciel Helios Astro"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
       <div class="container split">
         <article class="card reveal">
-          <h3>Ce que découvre le lecteur</h3>
+          <h3>Ce que vous allez découvrir</h3>
           <ul class="list">
-            <li>Le lien entre lumière, structure, matière et conscience.</li>
-            <li>Une lecture visuelle de la fleur de vie et de la géométrie sacrée.</li>
-            <li>Une traversée entre microcosme, corps humain, macrocosme et spiritualité.</li>
-            <li>Un ouvrage atypique, à la fois contemplatif, symbolique et argumenté.</li>
+            <li>Les lois invisibles qui structurent la réalité</li>
+            <li>Le lien entre lumière, géométrie et conscience</li>
+            <li>Une lecture nouvelle des formes universelles</li>
+            <li>Une approche accessible d’un savoir profond</li>
           </ul>
         </article>
 
         <article class="pricing reveal" id="acheter">
-          <div class="eyebrow">Offre mise en avant</div>
-          <h3>Édition premium</h3>
+          <div class="eyebrow">Disponible maintenant</div>
+          <h3>Édition imprimée</h3>
           <div class="price">
-            <strong>24€</strong>
-            <span>couverture mate</span>
+            <strong>Livre</strong>
+            <span>disponible sur Amazon</span>
           </div>
           <p class="mini-note">
-            Remplace ce bloc par ton prix réel, ton bouton PayPal ou ton lien de paiement. La structure est déjà prête.
+            Une œuvre qui ne se limite pas à la lecture, mais transforme votre perception du monde.
           </p>
           <ul class="list">
-            <li>Livre imprimé haute qualité</li>
-            <li>Visuels forts et univers propriétaire</li>
-            <li>Positionnement unique sur la géométrie sacrée</li>
+            <li>Univers visuel fort</li>
+            <li>Approche singulière de la géométrie sacrée</li>
+            <li>Lecture contemplative et structurée</li>
           </ul>
           <div style="margin-top:20px; display:flex; gap:12px; flex-wrap:wrap;">
-            <a class="btn" href="#">Acheter via PayPal</a>
-            <a class="btn-secondary" href="#avis">Lire les avis</a>
+            <a class="btn" href="https://www.amazon.fr/Dieu-est-lumiere-geometrie-sacr%C4%97e/dp/B08MSNHZDR" target="_blank" rel="noopener noreferrer">Acheter le livre</a>
+            <a class="btn-secondary" href="#univers-visuel">Voir le cerveau & le logo</a>
           </div>
         </article>
       </div>
     </section>
 
-    <section class="section" id="avis">
+    <section class="section">
       <div class="container">
         <div class="section-title reveal">
-          <h2>La preuve sociale fait le travail lourd</h2>
+          <h2>Une lecture qui laisse une empreinte</h2>
           <p>
-            Remplace ces textes par de vrais retours lecteurs, avis Amazon, captures ou citations presse. Le cadre est prêt.
+            Ce livre ne donne pas seulement des réponses. Il change la façon de regarder le monde.
           </p>
         </div>
+
         <div class="quote-grid">
           <blockquote class="quote reveal">
-            <p>« Une oeuvre visuellement forte, qui propose une lecture ambitieuse de l’univers et de la lumière. »</p>
+            <p>« Une œuvre visuellement forte, qui propose une lecture ambitieuse de l’univers et de la lumière. »</p>
             <strong>Lecteur • édition spirituelle</strong>
           </blockquote>
+
           <blockquote class="quote reveal">
             <p>« L’univers graphique capte immédiatement. On sent une vraie signature, pas un produit générique. »</p>
             <strong>Lectrice • art symbolique</strong>
           </blockquote>
+
           <blockquote class="quote reveal">
-            <p>« Une page de vente comme celle-ci donne enfin au livre l’écrin commercial qu’il mérite. »</p>
-            <strong>Retour marketing • Helios Astro</strong>
+            <p>« Une approche rare, sensible et profonde, qui relie le visible à l’invisible avec cohérence. »</p>
+            <strong>Lecteur • symbolisme et conscience</strong>
           </blockquote>
         </div>
       </div>
@@ -862,14 +892,13 @@
 
     <section class="section">
       <div class="container cta-box reveal">
-        <h2>Ton livre a besoin d’une scène, pas d’un coin de page</h2>
+        <h2>Accédez à cette vision</h2>
         <p>
-          Cette version pose la base commerciale solide : design immersif, narration claire, boutons d’action visibles,
-          ambiance premium et compatibilité immédiate avec ton site. Il reste ensuite à brancher tes vrais visuels,
-          ton vrai bouton PayPal et tes liens produits.
+          Plongez dans une œuvre qui révèle une architecture cachée du réel
+          et prolongez l’expérience à travers l’univers visuel Helios Astro.
         </p>
         <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
-          <a class="btn" href="#acheter">Activer la vente</a>
+          <a class="btn" href="https://www.amazon.fr/Dieu-est-lumiere-geometrie-sacr%C4%97e/dp/B08MSNHZDR" target="_blank" rel="noopener noreferrer">Acheter sur Amazon</a>
           <a class="btn-secondary" href="#livre">Revenir au livre</a>
         </div>
       </div>
@@ -878,7 +907,7 @@
 
   <footer>
     <div class="container">
-      Helios Astro — Landing page premium prête à personnaliser et à connecter à ton système de paiement.
+      Helios Astro — Livre, cerveau vivant, univers visuel et géométrie sacrée.
     </div>
   </footer>
 
@@ -895,4 +924,5 @@
   </script>
 </body>
 </html>
+
 
