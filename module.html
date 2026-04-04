@@ -73,7 +73,7 @@
 <div id="app">
   <div class="panel">
     <h1>Helios Astro — module vivant</h1>
-    <p>Visualisation animée inspirée de l’univers du livre. Le centre agit comme noyau de calcul visuel. Export PNG intégré.</p>
+    <p>Visualisation animée pour logiciel. Le centre agit comme noyau de calcul visuel. Export PNG intégré.</p>
 
     <div class="group">
       <label for="mode">Mode</label>
@@ -104,11 +104,13 @@
       <button id="exportBtn">Exporter en PNG</button>
     </div>
   </div>
+
   <div style="position:relative;">
     <canvas id="view"></canvas>
     <div class="meta">Version logiciel autonome — HTML/Canvas avec export</div>
   </div>
 </div>
+
 <script>
 (() => {
   const canvas = document.getElementById('view');
