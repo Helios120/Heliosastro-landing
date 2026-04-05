@@ -3,220 +3,185 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Helios Astro — Cerveau ultime organique</title>
+  <title>Helios Astro — Cerveau ultime x3</title>
   <style>
-    :root {
-      --bg: #000000;
-      --panel: rgba(8, 16, 24, 0.96);
-      --line: rgba(110, 220, 255, 0.16);
-      --text: #ecfbff;
-      --muted: #93cddd;
-      --accent: #5ee0ff;
-      --btn1: rgba(24, 122, 164, 0.86);
-      --btn2: rgba(8, 57, 77, 0.90);
+    :root{
+      --bg:#000;
+      --panel:rgba(8,16,24,.96);
+      --line:rgba(110,220,255,.16);
+      --text:#ecfbff;
+      --muted:#93cddd;
+      --accent:#5ee0ff;
+      --btn1:rgba(24,122,164,.86);
+      --btn2:rgba(8,57,77,.90);
     }
 
-    * {
-      box-sizing: border-box;
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      width:100%;
+      height:100%;
+      overflow:hidden;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Arial,Helvetica,sans-serif;
     }
 
-    html, body {
-      margin: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: var(--bg);
-      color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
+    #app{
+      display:grid;
+      grid-template-columns:320px 1fr;
+      width:100%;
+      height:100vh;
+      background:#000;
     }
 
-    #app {
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      width: 100%;
-      height: 100vh;
-      background: #000;
+    .panel{
+      background:linear-gradient(180deg,rgba(9,18,28,.98),rgba(0,0,0,.98));
+      border-right:1px solid var(--line);
+      padding:18px;
+      overflow-y:auto;
+      -webkit-overflow-scrolling:touch;
     }
 
-    .panel {
-      background: linear-gradient(180deg, rgba(9,18,28,.98), rgba(0,0,0,.98));
-      border-right: 1px solid var(--line);
-      padding: 18px;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:14px;
+      font-weight:700;
+      letter-spacing:.03em;
+      text-transform:uppercase;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 14px;
-      font-weight: 700;
-      letter-spacing: .03em;
-      text-transform: uppercase;
+    .brand-dot{
+      width:14px;
+      height:14px;
+      border-radius:50%;
+      background:radial-gradient(circle,#baffff,#39cfff 55%,#0b5f7a);
+      box-shadow:0 0 12px rgba(90,224,255,.7);
+      flex:0 0 auto;
     }
 
-    .brand-dot {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #baffff, #39cfff 55%, #0b5f7a);
-      box-shadow: 0 0 12px rgba(90, 224, 255, 0.7);
-      flex: 0 0 auto;
+    h1{
+      margin:0 0 8px;
+      font-size:24px;
+      line-height:1.05;
     }
 
-    h1 {
-      margin: 0 0 8px;
-      font-size: 24px;
-      line-height: 1.08;
+    .sub{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.45;
     }
 
-    .sub {
-      margin: 0 0 18px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.45;
+    .group{margin:0 0 16px}
+
+    label{
+      display:block;
+      margin-bottom:6px;
+      font-size:13px;
+      color:#bceff7;
+      font-weight:700;
     }
 
-    .group {
-      margin: 0 0 16px;
+    select,button,input[type="range"]{width:100%}
+
+    select,button{
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:11px 12px;
+      background:rgba(5,15,22,.92);
+      color:var(--text);
     }
 
-    label {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 13px;
-      color: #bceff7;
-      font-weight: 700;
+    input[type="range"]{
+      accent-color:var(--accent);
+      cursor:pointer;
     }
 
-    select,
-    button,
-    input[type="range"] {
-      width: 100%;
+    button{
+      cursor:pointer;
+      font-weight:700;
+      background:linear-gradient(180deg,var(--btn1),var(--btn2));
     }
 
-    select,
-    button {
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 11px 12px;
-      background: rgba(5,15,22,.92);
-      color: var(--text);
+    .meta{
+      margin-top:16px;
+      padding:12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.24);
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.5;
     }
 
-    input[type="range"] {
-      accent-color: var(--accent);
-      cursor: pointer;
-    }
-
-    button {
-      cursor: pointer;
-      font-weight: 700;
-      background: linear-gradient(180deg, var(--btn1), var(--btn2));
-    }
-
-    .meta {
-      margin-top: 16px;
-      padding: 12px;
-      border-radius: 14px;
-      border: 1px solid var(--line);
-      background: rgba(0,0,0,.24);
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.5;
-    }
-
-    .stage {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
+    .stage{
+      position:relative;
+      width:100%;
+      height:100%;
+      overflow:hidden;
       background:
-        radial-gradient(circle at center, rgba(16, 50, 80, 0.14), transparent 30%),
+        radial-gradient(circle at center, rgba(16,50,80,.14), transparent 30%),
         radial-gradient(circle at center, rgba(0,0,0,0), rgba(0,0,0,1) 74%),
         #000;
     }
 
-    #view {
-      display: block;
-      width: 100%;
-      height: 100%;
-      background: transparent;
+    #view{
+      display:block;
+      width:100%;
+      height:100%;
+      background:transparent;
     }
 
-    .footer-note {
-      position: absolute;
-      right: 14px;
-      bottom: 12px;
-      color: #7faab6;
-      font-size: 12px;
-      background: rgba(0,0,0,.28);
-      padding: 8px 10px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.05);
-      backdrop-filter: blur(6px);
+    .footer-note{
+      position:absolute;
+      right:14px;
+      bottom:12px;
+      color:#7faab6;
+      font-size:12px;
+      background:rgba(0,0,0,.28);
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.05);
+      backdrop-filter:blur(6px);
     }
 
-    @media (max-width: 900px) {
-      #app {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr;
+    @media (max-width: 900px){
+      #app{
+        grid-template-columns:1fr;
+        grid-template-rows:auto 1fr;
       }
-
-      .panel {
-        border-right: 0;
-        border-bottom: 1px solid var(--line);
-        max-height: 38vh;
-        padding: 12px;
+      .panel{
+        border-right:0;
+        border-bottom:1px solid var(--line);
+        max-height:38vh;
+        padding:12px;
       }
-
-      h1 {
-        font-size: 20px;
-      }
-
-      .sub, label, .meta {
-        font-size: 12px;
-      }
-
-      .group {
-        margin-bottom: 12px;
-      }
-
-      .footer-note {
-        font-size: 11px;
-        right: 10px;
-        bottom: 10px;
+      h1{font-size:20px}
+      .sub,label,.meta{font-size:12px}
+      .group{margin-bottom:12px}
+      .footer-note{
+        font-size:11px;
+        right:10px;
+        bottom:10px;
       }
     }
 
-    @media (max-width: 560px) {
-      .panel {
-        max-height: 34vh;
-        padding: 10px;
+    @media (max-width: 560px){
+      .panel{
+        max-height:34vh;
+        padding:10px;
       }
-
-      .brand {
-        margin-bottom: 10px;
+      .brand{margin-bottom:10px}
+      h1{font-size:18px}
+      select,button{
+        padding:10px 10px;
+        font-size:14px;
       }
-
-      h1 {
-        font-size: 18px;
-      }
-
-      select,
-      button {
-        padding: 10px 10px;
-        font-size: 14px;
-      }
-
-      input[type="range"] {
-        height: 28px;
-      }
-
-      .meta {
-        padding: 10px;
-      }
+      input[type="range"]{height:28px}
+      .meta{padding:10px}
     }
   </style>
 </head>
@@ -228,10 +193,10 @@
         <span>Helios Astro</span>
       </div>
 
-      <h1>Cerveau ultime organique</h1>
+      <h1>Cerveau ultime x3</h1>
       <p class="sub">
-        Version plus fidèle au dessin : double hémisphère, lignes fines, centre nettoyé,
-        contour vivant et rendu mieux adapté aux téléphones Android.
+        Version renforcée : double hémisphère, halo plus profond, lignes fines, centre plus net,
+        contour organique et rendu plus fidèle au dessin, y compris sur Android.
       </p>
 
       <div class="group">
@@ -245,42 +210,42 @@
 
       <div class="group">
         <label for="breath">Respiration</label>
-        <input id="breath" type="range" min="0" max="2.5" step="0.01" value="1.10" />
+        <input id="breath" type="range" min="0" max="2.5" step="0.01" value="1.08" />
       </div>
 
       <div class="group">
         <label for="rotation">Rotation consciente</label>
-        <input id="rotation" type="range" min="0" max="2.5" step="0.01" value="0.45" />
+        <input id="rotation" type="range" min="0" max="2.5" step="0.01" value="0.35" />
       </div>
 
       <div class="group">
         <label for="halo">Halo cosmique</label>
-        <input id="halo" type="range" min="0" max="2.5" step="0.01" value="1.05" />
+        <input id="halo" type="range" min="0" max="2.5" step="0.01" value="1.15" />
       </div>
 
       <div class="group">
         <label for="synapses">Synapses</label>
-        <input id="synapses" type="range" min="0" max="2.5" step="0.01" value="1.15" />
+        <input id="synapses" type="range" min="0" max="2.5" step="0.01" value="1.25" />
       </div>
 
       <div class="group">
         <label for="stars">Étoiles</label>
-        <input id="stars" type="range" min="0" max="2.5" step="0.01" value="0.8" />
+        <input id="stars" type="range" min="0" max="2.5" step="0.01" value="0.90" />
       </div>
 
       <div class="group">
         <label for="brainScale">Taille cerveau</label>
-        <input id="brainScale" type="range" min="0.2" max="1.2" step="0.01" value="0.60" />
+        <input id="brainScale" type="range" min="0.2" max="1.2" step="0.01" value="0.62" />
       </div>
 
       <div class="group">
         <label for="lineFine">Finesse des lignes</label>
-        <input id="lineFine" type="range" min="0.4" max="2" step="0.01" value="0.85" />
+        <input id="lineFine" type="range" min="0.4" max="2" step="0.01" value="0.78" />
       </div>
 
       <div class="group">
         <label for="centerClean">Centre propre</label>
-        <input id="centerClean" type="range" min="0" max="2" step="0.01" value="1.25" />
+        <input id="centerClean" type="range" min="0" max="2" step="0.01" value="1.40" />
       </div>
 
       <div class="group">
@@ -290,18 +255,18 @@
       <div class="meta">
         Réglage conseillé :<br>
         • Mode <b>Ultime</b><br>
-        • Respiration : 0.9 à 1.2<br>
-        • Halo : 0.9 à 1.3<br>
-        • Synapses : 1.0 à 1.4<br>
+        • Respiration : 0.9 à 1.15<br>
+        • Halo : 1.0 à 1.4<br>
+        • Synapses : 1.1 à 1.5<br>
         • Rotation : faible<br>
-        • Finesse : 0.75 à 1.0<br>
-        • Centre propre : 1.1 à 1.5
+        • Finesse : 0.70 à 0.90<br>
+        • Centre propre : 1.2 à 1.6
       </div>
     </aside>
 
     <main class="stage">
       <canvas id="view"></canvas>
-      <div class="footer-note">Cerveau organique — version phone ready</div>
+      <div class="footer-note">Cerveau organique — visuel x3</div>
     </main>
   </div>
 
@@ -325,9 +290,7 @@
       let w = 0, h = 0, t = 0;
 
       const img = new Image();
-      img.src = "brain.png";
-      // Si tu mets l'image dans asset :
-      // img.src = "asset/brain.png";
+      img.src = "/Heliosastro-landing/asset/brain.png";
 
       function resize() {
         const rect = canvas.getBoundingClientRect();
@@ -341,7 +304,7 @@
       exportBtn.addEventListener("click", () => {
         const a = document.createElement("a");
         a.href = canvas.toDataURL("image/png");
-        a.download = "heliosastro-cerveau-organique.png";
+        a.download = "heliosastro-cerveau-x3.png";
         a.click();
       });
 
@@ -374,7 +337,7 @@
         const lw = 1.1 * DPR * lineFine;
 
         ctx.save();
-        ctx.strokeStyle = `rgba(120,220,255,${mode === "ultimate" ? 0.16 : 0.11})`;
+        ctx.strokeStyle = `rgba(120,220,255,${mode === "ultimate" ? 0.18 : 0.12})`;
         ctx.lineWidth = lw;
 
         function lobe(offsetX, flip = 1) {
@@ -406,13 +369,14 @@
         lobe(-gap, 1);
         lobe(+gap, -1);
 
-        glow(cx, cy, brainSize * 0.55, [0,255,220], 0.015 * halo);
+        glow(cx, cy, brainSize * 0.62, [0,255,220], 0.020 * halo);
+        glow(cx, cy, brainSize * 0.35, [0,120,255], 0.028 * halo);
         ctx.restore();
       }
 
       function drawMidline(cx, cy, brainSize, lineFine, centerClean) {
         ctx.save();
-        ctx.strokeStyle = `rgba(210,245,255,${0.10 * centerClean})`;
+        ctx.strokeStyle = `rgba(220,248,255,${0.12 * centerClean})`;
         ctx.lineWidth = 0.9 * DPR * lineFine;
         ctx.beginPath();
         ctx.moveTo(cx, cy - brainSize * 0.36);
@@ -422,14 +386,14 @@
       }
 
       function drawOrganicLines(cx, cy, brainSize, lineFine, mode) {
-        const rows = mode === "ultimate" ? 11 : mode === "alive" ? 8 : 5;
+        const rows = mode === "ultimate" ? 13 : mode === "alive" ? 9 : 5;
         const gap = brainSize * 0.065;
         const halfW = brainSize * 0.31;
         const halfH = brainSize * 0.35;
 
         ctx.save();
-        ctx.strokeStyle = `rgba(135,220,255,${mode === "ultimate" ? 0.13 : 0.09})`;
-        ctx.lineWidth = 0.65 * DPR * lineFine;
+        ctx.strokeStyle = `rgba(135,220,255,${mode === "ultimate" ? 0.14 : 0.09})`;
+        ctx.lineWidth = 0.58 * DPR * lineFine;
 
         for (let r = 0; r < rows; r++) {
           const yy = cy - halfH + (r / (rows - 1)) * (halfH * 2);
@@ -458,7 +422,7 @@
       }
 
       function drawRosacesFine(cx, cy, brainSize, rot, mode, lineFine) {
-        const rings = mode === "ultimate" ? 7 : mode === "alive" ? 5 : 3;
+        const rings = mode === "ultimate" ? 8 : mode === "alive" ? 5 : 3;
 
         ctx.save();
         ctx.translate(cx, cy);
@@ -473,8 +437,8 @@
             const x = Math.cos(a) * rr;
             const y = Math.sin(a) * rr * 0.82;
 
-            ctx.strokeStyle = `rgba(${95 + ring * 10},${180 + ring * 5},255,${mode === "ultimate" ? 0.08 : 0.05})`;
-            ctx.lineWidth = 0.55 * DPR * lineFine;
+            ctx.strokeStyle = `rgba(${95 + ring * 10},${180 + ring * 5},255,${mode === "ultimate" ? 0.09 : 0.05})`;
+            ctx.lineWidth = 0.52 * DPR * lineFine;
             ctx.beginPath();
             ctx.ellipse(x, y, rr * 0.14, rr * 0.055, a + t * 0.012, 0, Math.PI * 2);
             ctx.stroke();
@@ -491,15 +455,15 @@
         ctx.translate(cx, cy);
         ctx.rotate(angle);
 
-        glow(0, 0, brainSize * 0.78, [0, 255, 220], 0.018 * halo);
-        glow(0, 0, brainSize * 0.45, [0, 120, 255], 0.035 * halo);
+        glow(0, 0, brainSize * 0.82, [0,255,220], 0.020 * halo);
+        glow(0, 0, brainSize * 0.48, [0,120,255], 0.040 * halo);
 
         ctx.drawImage(img, -brainSize / 2, -brainSize / 2, brainSize, brainSize);
         ctx.restore();
       }
 
       function drawSynapses(cx, cy, brainSize, synapses, mode, lineFine) {
-        const count = mode === "ultimate" ? 34 : mode === "alive" ? 24 : 14;
+        const count = mode === "ultimate" ? 42 : mode === "alive" ? 28 : 14;
         const radius = brainSize * 0.40;
 
         for (let i = 0; i < count; i++) {
@@ -508,12 +472,12 @@
           const x = cx + Math.cos(a + t * 0.65) * orbit;
           const y = cy + Math.sin(a + t * 0.82) * orbit * 0.78;
 
-          glow(x, y, 8 * synapses, [90, 210, 255], 0.11);
-          glow(x, y, 2.6 * synapses, [255, 248, 130], 0.9);
+          glow(x, y, 8 * synapses, [90,210,255], 0.13);
+          glow(x, y, 2.8 * synapses, [255,248,130], 0.95);
 
           if (mode !== "soft") {
-            ctx.strokeStyle = `rgba(120,220,255,${mode === "ultimate" ? 0.055 : 0.035})`;
-            ctx.lineWidth = 0.5 * DPR * lineFine;
+            ctx.strokeStyle = `rgba(120,220,255,${mode === "ultimate" ? 0.060 : 0.035})`;
+            ctx.lineWidth = 0.48 * DPR * lineFine;
             ctx.beginPath();
             ctx.moveTo(cx, cy);
             ctx.lineTo(x, y);
@@ -523,9 +487,9 @@
       }
 
       function drawCenterClean(cx, cy, brainSize, centerClean) {
-        glow(cx, cy, brainSize * 0.11, [0, 180, 255], 0.10 * centerClean);
-        glow(cx, cy, brainSize * 0.055, [180, 255, 255], 0.22 * centerClean);
-        glow(cx, cy, brainSize * 0.022, [255, 255, 255], 0.92);
+        glow(cx, cy, brainSize * 0.13, [0,180,255], 0.11 * centerClean);
+        glow(cx, cy, brainSize * 0.065, [180,255,255], 0.24 * centerClean);
+        glow(cx, cy, brainSize * 0.026, [255,255,255], 0.98);
       }
 
       function frame() {
@@ -546,11 +510,10 @@
         ctx.fillStyle = "#000";
         ctx.fillRect(0, 0, w, h);
 
-        drawStars(Math.floor(45 + stars * 70), stars * 0.75);
+        drawStars(Math.floor(45 + stars * 85), stars * 0.80);
 
         const cx = w * 0.5;
         const cy = h * 0.5;
-
         const phone = w < h;
         const baseFactor = phone ? 0.72 : 0.62;
         const breatheScale = 1 + 0.028 * Math.sin(t * 2 * Math.max(0.2, breath));
@@ -561,8 +524,8 @@
             cx + Math.sin(t * 0.28 + i) * 16 * DPR,
             cy + Math.cos(t * 0.24 + i) * 12 * DPR,
             brainSize * (0.68 + i * 0.11),
-            [0, 120, 255],
-            0.008 * halo
+            [0,120,255],
+            0.009 * halo
           );
         }
 
@@ -576,8 +539,8 @@
         if (mode === "ultimate") {
           for (let i = 0; i < 10; i++) {
             const a = i / 10 * Math.PI * 2 + t * 0.025;
-            ctx.strokeStyle = `rgba(235,225,140,${0.09 * halo})`;
-            ctx.lineWidth = 0.75 * DPR * lineFine;
+            ctx.strokeStyle = `rgba(235,225,140,${0.10 * halo})`;
+            ctx.lineWidth = 0.72 * DPR * lineFine;
             ctx.beginPath();
             ctx.moveTo(cx, cy);
             ctx.lineTo(
@@ -596,7 +559,7 @@
       img.onerror = () => {
         ctx.fillStyle = "#fff";
         ctx.font = "20px Arial";
-        ctx.fillText("Erreur : image brain.png introuvable", 40, 60);
+        ctx.fillText("Erreur : image /Heliosastro-landing/asset/brain.png introuvable", 40, 60);
       };
     })();
   </script>
