@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Helios Astro — Cerveau ultime x3</title>
+  <title>Helios Astro — Logiciel fusionné</title>
   <style>
     :root{
       --bg:#000;
@@ -17,6 +17,7 @@
     }
 
     *{box-sizing:border-box}
+
     html,body{
       margin:0;
       width:100%;
@@ -29,7 +30,7 @@
 
     #app{
       display:grid;
-      grid-template-columns:320px 1fr;
+      grid-template-columns:340px 1fr;
       width:100%;
       height:100vh;
       background:#000;
@@ -69,13 +70,24 @@
     }
 
     .sub{
-      margin:0 0 18px;
+      margin:0 0 16px;
       color:var(--muted);
       font-size:13px;
       line-height:1.45;
     }
 
-    .group{margin:0 0 16px}
+    .principle{
+      margin:0 0 18px;
+      padding:12px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:rgba(0,0,0,.22);
+      color:#d7f6ff;
+      font-size:12px;
+      line-height:1.55;
+    }
+
+    .group{margin:0 0 15px}
 
     label{
       display:block;
@@ -85,7 +97,9 @@
       font-weight:700;
     }
 
-    select,button,input[type="range"]{width:100%}
+    select,button,input[type="range"]{
+      width:100%;
+    }
 
     select,button{
       border:1px solid var(--line);
@@ -123,7 +137,7 @@
       height:100%;
       overflow:hidden;
       background:
-        radial-gradient(circle at center, rgba(16,50,80,.14), transparent 30%),
+        radial-gradient(circle at center, rgba(16,50,80,.16), transparent 30%),
         radial-gradient(circle at center, rgba(0,0,0,0), rgba(0,0,0,1) 74%),
         #000;
     }
@@ -148,19 +162,21 @@
       backdrop-filter:blur(6px);
     }
 
-    @media (max-width: 900px){
+    @media (max-width: 920px){
       #app{
         grid-template-columns:1fr;
         grid-template-rows:auto 1fr;
       }
+
       .panel{
         border-right:0;
         border-bottom:1px solid var(--line);
-        max-height:38vh;
+        max-height:40vh;
         padding:12px;
       }
+
       h1{font-size:20px}
-      .sub,label,.meta{font-size:12px}
+      .sub,label,.meta,.principle{font-size:12px}
       .group{margin-bottom:12px}
       .footer-note{
         font-size:11px;
@@ -169,19 +185,22 @@
       }
     }
 
-    @media (max-width: 560px){
+    @media (max-width:560px){
       .panel{
-        max-height:34vh;
+        max-height:36vh;
         padding:10px;
       }
-      .brand{margin-bottom:10px}
+
       h1{font-size:18px}
+
       select,button{
-        padding:10px 10px;
+        padding:10px;
         font-size:14px;
       }
-      input[type="range"]{height:28px}
-      .meta{padding:10px}
+
+      input[type="range"]{
+        height:28px;
+      }
     }
   </style>
 </head>
@@ -193,24 +212,37 @@
         <span>Helios Astro</span>
       </div>
 
-      <h1>Cerveau ultime x3</h1>
+      <h1>Logiciel fusionné</h1>
       <p class="sub">
-        Version renforcée : double hémisphère, halo plus profond, lignes fines, centre plus net,
-        contour organique et rendu plus fidèle au dessin, y compris sur Android.
+        Un seul moteur visuel : particules, auto-organisation, cerveau vivant,
+        synapses, rosaces et noyau de lumière.
       </p>
+
+      <div class="principle">
+        <strong>Principe :</strong><br>
+        La vie naît du mouvement organisé de particules. D’abord dispersée, l’énergie
+        entre en interaction, se structure en flux, devient réseau, puis forme vivante.
+        Ici, le chaos devient cerveau.
+      </div>
 
       <div class="group">
         <label for="mode">Mode</label>
         <select id="mode">
-          <option value="soft">Doux</option>
-          <option value="alive" selected>Vivant</option>
-          <option value="ultimate">Ultime</option>
+          <option value="origin">Origine</option>
+          <option value="formation">Formation</option>
+          <option value="living" selected>Cerveau vivant</option>
+          <option value="sacred">Fusion sacrée</option>
         </select>
       </div>
 
       <div class="group">
+        <label for="intensity">Intensité globale</label>
+        <input id="intensity" type="range" min="0.4" max="2.5" step="0.01" value="1.15" />
+      </div>
+
+      <div class="group">
         <label for="breath">Respiration</label>
-        <input id="breath" type="range" min="0" max="2.5" step="0.01" value="1.08" />
+        <input id="breath" type="range" min="0" max="2.5" step="0.01" value="1.05" />
       </div>
 
       <div class="group">
@@ -224,13 +256,18 @@
       </div>
 
       <div class="group">
-        <label for="synapses">Synapses</label>
-        <input id="synapses" type="range" min="0" max="2.5" step="0.01" value="1.25" />
+        <label for="particles">Flux de particules</label>
+        <input id="particles" type="range" min="0.2" max="2.5" step="0.01" value="1.10" />
       </div>
 
       <div class="group">
-        <label for="stars">Étoiles</label>
-        <input id="stars" type="range" min="0" max="2.5" step="0.01" value="0.90" />
+        <label for="synapses">Synapses</label>
+        <input id="synapses" type="range" min="0.2" max="2.5" step="0.01" value="1.20" />
+      </div>
+
+      <div class="group">
+        <label for="mandala">Rosaces</label>
+        <input id="mandala" type="range" min="0.2" max="2.5" step="0.01" value="1.00" />
       </div>
 
       <div class="group">
@@ -240,12 +277,12 @@
 
       <div class="group">
         <label for="lineFine">Finesse des lignes</label>
-        <input id="lineFine" type="range" min="0.4" max="2" step="0.01" value="0.78" />
+        <input id="lineFine" type="range" min="0.4" max="2" step="0.01" value="0.80" />
       </div>
 
       <div class="group">
         <label for="centerClean">Centre propre</label>
-        <input id="centerClean" type="range" min="0" max="2" step="0.01" value="1.40" />
+        <input id="centerClean" type="range" min="0" max="2" step="0.01" value="1.35" />
       </div>
 
       <div class="group">
@@ -254,19 +291,17 @@
 
       <div class="meta">
         Réglage conseillé :<br>
-        • Mode <b>Ultime</b><br>
-        • Respiration : 0.9 à 1.15<br>
-        • Halo : 1.0 à 1.4<br>
-        • Synapses : 1.1 à 1.5<br>
-        • Rotation : faible<br>
-        • Finesse : 0.70 à 0.90<br>
-        • Centre propre : 1.2 à 1.6
+        • Origine = particules fortes, cerveau faible<br>
+        • Formation = particules + cerveau moyen<br>
+        • Cerveau vivant = image + synapses + halo<br>
+        • Fusion sacrée = tout activé<br><br>
+        Image utilisée : <code>asset/brain.png</code>
       </div>
     </aside>
 
     <main class="stage">
       <canvas id="view"></canvas>
-      <div class="footer-note">Cerveau organique — visuel x3</div>
+      <div class="footer-note">Particules → structure → cerveau vivant</div>
     </main>
   </div>
 
@@ -277,11 +312,13 @@
       const DPR = Math.min(window.devicePixelRatio || 1, 2);
 
       const modeEl = document.getElementById("mode");
+      const intensityEl = document.getElementById("intensity");
       const breathEl = document.getElementById("breath");
       const rotationEl = document.getElementById("rotation");
       const haloEl = document.getElementById("halo");
+      const particlesEl = document.getElementById("particles");
       const synapsesEl = document.getElementById("synapses");
-      const starsEl = document.getElementById("stars");
+      const mandalaEl = document.getElementById("mandala");
       const brainScaleEl = document.getElementById("brainScale");
       const lineFineEl = document.getElementById("lineFine");
       const centerCleanEl = document.getElementById("centerClean");
@@ -291,6 +328,25 @@
 
       const img = new Image();
       img.src = "/Heliosastro-landing/asset/brain.png";
+
+      const particles = [];
+      const PARTICLE_BASE = 140;
+
+      function initParticles() {
+        particles.length = 0;
+        for (let i = 0; i < PARTICLE_BASE; i++) {
+          particles.push({
+            a: Math.random() * Math.PI * 2,
+            r: 0.15 + Math.random() * 0.85,
+            speed: 0.2 + Math.random() * 1.2,
+            drift: (Math.random() - 0.5) * 0.8,
+            size: 0.8 + Math.random() * 2.2,
+            phase: Math.random() * Math.PI * 2
+          });
+        }
+      }
+
+      initParticles();
 
       function resize() {
         const rect = canvas.getBoundingClientRect();
@@ -304,7 +360,7 @@
       exportBtn.addEventListener("click", () => {
         const a = document.createElement("a");
         a.href = canvas.toDataURL("image/png");
-        a.download = "heliosastro-cerveau-x3.png";
+        a.download = "heliosastro-logiciel-fusionne.png";
         a.click();
       });
 
@@ -318,26 +374,78 @@
         ctx.fill();
       }
 
-      function drawStars(amount, intensity) {
+      function lerp(a, b, t) {
+        return a + (b - a) * t;
+      }
+
+      function getModeMix(mode) {
+        if (mode === "origin") {
+          return {
+            brain: 0.12,
+            contour: 0.15,
+            particles: 1.40,
+            synapses: 0.25,
+            mandala: 0.10,
+            rays: 0.00,
+            center: 0.50
+          };
+        }
+
+        if (mode === "formation") {
+          return {
+            brain: 0.45,
+            contour: 0.55,
+            particles: 1.15,
+            synapses: 0.70,
+            mandala: 0.45,
+            rays: 0.12,
+            center: 0.80
+          };
+        }
+
+        if (mode === "living") {
+          return {
+            brain: 0.95,
+            contour: 0.90,
+            particles: 0.85,
+            synapses: 1.00,
+            mandala: 0.75,
+            rays: 0.18,
+            center: 1.00
+          };
+        }
+
+        return {
+          brain: 1.10,
+          contour: 1.00,
+          particles: 1.05,
+          synapses: 1.20,
+          mandala: 1.15,
+          rays: 0.35,
+          center: 1.15
+        };
+      }
+
+      function drawBackgroundStars(amount, intensity) {
         for (let i = 0; i < amount; i++) {
           const x = (Math.sin(i * 145.19 + t * 0.13) * 0.5 + 0.5) * w;
           const y = (Math.cos(i * 97.73 + t * 0.09) * 0.5 + 0.5) * h;
           const r = ((i % 5) + 1) * 0.5 * DPR;
-          ctx.fillStyle = `rgba(255,255,255,${0.03 + 0.13 * intensity})`;
+          ctx.fillStyle = `rgba(255,255,255,${0.02 + 0.10 * intensity})`;
           ctx.beginPath();
           ctx.arc(x, y, r, 0, Math.PI * 2);
           ctx.fill();
         }
       }
 
-      function drawHemisphereContours(cx, cy, brainSize, lineFine, halo, mode) {
+      function drawHemisphereContours(cx, cy, brainSize, lineFine, halo, opacityMul) {
         const halfW = brainSize * 0.34;
         const halfH = brainSize * 0.39;
         const gap = brainSize * 0.065;
         const lw = 1.1 * DPR * lineFine;
 
         ctx.save();
-        ctx.strokeStyle = `rgba(120,220,255,${mode === "ultimate" ? 0.18 : 0.12})`;
+        ctx.strokeStyle = `rgba(120,220,255,${0.16 * opacityMul})`;
         ctx.lineWidth = lw;
 
         function lobe(offsetX, flip = 1) {
@@ -369,30 +477,19 @@
         lobe(-gap, 1);
         lobe(+gap, -1);
 
-        glow(cx, cy, brainSize * 0.62, [0,255,220], 0.020 * halo);
-        glow(cx, cy, brainSize * 0.35, [0,120,255], 0.028 * halo);
+        glow(cx, cy, brainSize * 0.62, [0,255,220], 0.020 * halo * opacityMul);
+        glow(cx, cy, brainSize * 0.35, [0,120,255], 0.028 * halo * opacityMul);
         ctx.restore();
       }
 
-      function drawMidline(cx, cy, brainSize, lineFine, centerClean) {
-        ctx.save();
-        ctx.strokeStyle = `rgba(220,248,255,${0.12 * centerClean})`;
-        ctx.lineWidth = 0.9 * DPR * lineFine;
-        ctx.beginPath();
-        ctx.moveTo(cx, cy - brainSize * 0.36);
-        ctx.quadraticCurveTo(cx + brainSize * 0.012, cy, cx, cy + brainSize * 0.34);
-        ctx.stroke();
-        ctx.restore();
-      }
-
-      function drawOrganicLines(cx, cy, brainSize, lineFine, mode) {
-        const rows = mode === "ultimate" ? 13 : mode === "alive" ? 9 : 5;
+      function drawOrganicLines(cx, cy, brainSize, lineFine, opacityMul) {
+        const rows = 12;
         const gap = brainSize * 0.065;
         const halfW = brainSize * 0.31;
         const halfH = brainSize * 0.35;
 
         ctx.save();
-        ctx.strokeStyle = `rgba(135,220,255,${mode === "ultimate" ? 0.14 : 0.09})`;
+        ctx.strokeStyle = `rgba(135,220,255,${0.12 * opacityMul})`;
         ctx.lineWidth = 0.58 * DPR * lineFine;
 
         for (let r = 0; r < rows; r++) {
@@ -421,8 +518,19 @@
         ctx.restore();
       }
 
-      function drawRosacesFine(cx, cy, brainSize, rot, mode, lineFine) {
-        const rings = mode === "ultimate" ? 8 : mode === "alive" ? 5 : 3;
+      function drawMidline(cx, cy, brainSize, lineFine, centerClean) {
+        ctx.save();
+        ctx.strokeStyle = `rgba(220,248,255,${0.12 * centerClean})`;
+        ctx.lineWidth = 0.9 * DPR * lineFine;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy - brainSize * 0.36);
+        ctx.quadraticCurveTo(cx + brainSize * 0.012, cy, cx, cy + brainSize * 0.34);
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      function drawMandala(cx, cy, brainSize, rot, amount, lineFine) {
+        const rings = Math.max(2, Math.floor(8 * amount));
 
         ctx.save();
         ctx.translate(cx, cy);
@@ -437,7 +545,7 @@
             const x = Math.cos(a) * rr;
             const y = Math.sin(a) * rr * 0.82;
 
-            ctx.strokeStyle = `rgba(${95 + ring * 10},${180 + ring * 5},255,${mode === "ultimate" ? 0.09 : 0.05})`;
+            ctx.strokeStyle = `rgba(${95 + ring * 8},${180 + ring * 4},255,${0.08 * amount})`;
             ctx.lineWidth = 0.52 * DPR * lineFine;
             ctx.beginPath();
             ctx.ellipse(x, y, rr * 0.14, rr * 0.055, a + t * 0.012, 0, Math.PI * 2);
@@ -448,36 +556,70 @@
         ctx.restore();
       }
 
-      function drawBrainImage(cx, cy, brainSize, angle, halo) {
+      function drawBrainImage(cx, cy, brainSize, angle, halo, opacityMul) {
         if (!img.complete) return;
 
         ctx.save();
         ctx.translate(cx, cy);
         ctx.rotate(angle);
+        ctx.globalAlpha = Math.max(0, Math.min(1, opacityMul));
 
-        glow(0, 0, brainSize * 0.82, [0,255,220], 0.020 * halo);
-        glow(0, 0, brainSize * 0.48, [0,120,255], 0.040 * halo);
+        glow(0, 0, brainSize * 0.82, [0,255,220], 0.020 * halo * opacityMul);
+        glow(0, 0, brainSize * 0.48, [0,120,255], 0.040 * halo * opacityMul);
 
         ctx.drawImage(img, -brainSize / 2, -brainSize / 2, brainSize, brainSize);
         ctx.restore();
       }
 
-      function drawSynapses(cx, cy, brainSize, synapses, mode, lineFine) {
-        const count = mode === "ultimate" ? 42 : mode === "alive" ? 28 : 14;
-        const radius = brainSize * 0.40;
+      function drawCore(cx, cy, brainSize, centerClean, strength) {
+        glow(cx, cy, brainSize * 0.13, [0,180,255], 0.11 * centerClean * strength);
+        glow(cx, cy, brainSize * 0.065, [180,255,255], 0.24 * centerClean * strength);
+        glow(cx, cy, brainSize * 0.026, [255,255,255], 0.98 * strength);
+      }
 
-        for (let i = 0; i < count; i++) {
-          const a = i / count * Math.PI * 2;
-          const orbit = radius * (0.88 + 0.12 * Math.sin(t * 1.3 + i));
-          const x = cx + Math.cos(a + t * 0.65) * orbit;
-          const y = cy + Math.sin(a + t * 0.82) * orbit * 0.78;
+      function drawRays(cx, cy, brainSize, strength, lineFine) {
+        if (strength <= 0) return;
 
-          glow(x, y, 8 * synapses, [90,210,255], 0.13);
-          glow(x, y, 2.8 * synapses, [255,248,130], 0.95);
+        for (let i = 0; i < 10; i++) {
+          const a = i / 10 * Math.PI * 2 + t * 0.025;
+          ctx.strokeStyle = `rgba(235,225,140,${0.10 * strength})`;
+          ctx.lineWidth = 0.72 * DPR * lineFine;
+          ctx.beginPath();
+          ctx.moveTo(cx, cy);
+          ctx.lineTo(
+            cx + Math.cos(a) * brainSize * 0.44,
+            cy + Math.sin(a) * brainSize * 0.44
+          );
+          ctx.stroke();
+        }
+      }
 
-          if (mode !== "soft") {
-            ctx.strokeStyle = `rgba(120,220,255,${mode === "ultimate" ? 0.060 : 0.035})`;
-            ctx.lineWidth = 0.48 * DPR * lineFine;
+      function drawParticles(cx, cy, brainSize, flow, synStrength, modeName) {
+        const orbitBase = brainSize * (modeName === "origin" ? 0.78 : 0.48);
+
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          const field = modeName === "origin"
+            ? 0.15
+            : modeName === "formation"
+              ? 0.45
+              : modeName === "living"
+                ? 0.72
+                : 0.95;
+
+          const localR = orbitBase * lerp(1.15, p.r, field);
+          const ang = p.a + t * (0.22 + p.speed * 0.12) + Math.sin(t * 0.7 + p.phase) * p.drift * 0.08;
+          const warp = modeName === "sacred" ? Math.sin(ang * 3 + t) * 0.06 : 0;
+
+          const x = cx + Math.cos(ang) * localR * (1 + warp);
+          const y = cy + Math.sin(ang) * localR * 0.78 * (1 - warp * 0.4);
+
+          glow(x, y, (2.4 + p.size) * flow, [90,210,255], 0.10 * flow);
+          glow(x, y, (0.9 + p.size * 0.5) * flow, [255,245,130], 0.95);
+
+          if (synStrength > 0.2 && i % 3 === 0) {
+            ctx.strokeStyle = `rgba(120,220,255,${0.04 * synStrength})`;
+            ctx.lineWidth = 0.45 * DPR;
             ctx.beginPath();
             ctx.moveTo(cx, cy);
             ctx.lineTo(x, y);
@@ -486,22 +628,20 @@
         }
       }
 
-      function drawCenterClean(cx, cy, brainSize, centerClean) {
-        glow(cx, cy, brainSize * 0.13, [0,180,255], 0.11 * centerClean);
-        glow(cx, cy, brainSize * 0.065, [180,255,255], 0.24 * centerClean);
-        glow(cx, cy, brainSize * 0.026, [255,255,255], 0.98);
-      }
-
       function frame() {
         requestAnimationFrame(frame);
         t += 0.016;
 
         const mode = modeEl.value;
+        const mix = getModeMix(mode);
+
+        const intensity = parseFloat(intensityEl.value);
         const breath = parseFloat(breathEl.value);
         const rot = parseFloat(rotationEl.value);
         const halo = parseFloat(haloEl.value);
+        const particlesFlow = parseFloat(particlesEl.value);
         const synapses = parseFloat(synapsesEl.value);
-        const stars = parseFloat(starsEl.value);
+        const mandala = parseFloat(mandalaEl.value);
         const brainScale = parseFloat(brainScaleEl.value);
         const lineFine = parseFloat(lineFineEl.value);
         const centerClean = parseFloat(centerCleanEl.value);
@@ -510,7 +650,7 @@
         ctx.fillStyle = "#000";
         ctx.fillRect(0, 0, w, h);
 
-        drawStars(Math.floor(45 + stars * 85), stars * 0.80);
+        drawBackgroundStars(Math.floor(45 + particlesFlow * 70), particlesFlow * 0.8);
 
         const cx = w * 0.5;
         const cy = h * 0.5;
@@ -525,33 +665,18 @@
             cy + Math.cos(t * 0.24 + i) * 12 * DPR,
             brainSize * (0.68 + i * 0.11),
             [0,120,255],
-            0.009 * halo
+            0.009 * halo * intensity
           );
         }
 
-        drawHemisphereContours(cx, cy, brainSize, lineFine, halo, mode);
-        drawOrganicLines(cx, cy, brainSize, lineFine, mode);
-        drawRosacesFine(cx, cy, brainSize, rot, mode, lineFine);
-        drawBrainImage(cx, cy, brainSize, Math.sin(t * 0.45) * 0.012 * rot, halo);
-        drawMidline(cx, cy, brainSize, lineFine, centerClean);
-        drawSynapses(cx, cy, brainSize, synapses, mode, lineFine);
-
-        if (mode === "ultimate") {
-          for (let i = 0; i < 10; i++) {
-            const a = i / 10 * Math.PI * 2 + t * 0.025;
-            ctx.strokeStyle = `rgba(235,225,140,${0.10 * halo})`;
-            ctx.lineWidth = 0.72 * DPR * lineFine;
-            ctx.beginPath();
-            ctx.moveTo(cx, cy);
-            ctx.lineTo(
-              cx + Math.cos(a) * brainSize * 0.44,
-              cy + Math.sin(a) * brainSize * 0.44
-            );
-            ctx.stroke();
-          }
-        }
-
-        drawCenterClean(cx, cy, brainSize, centerClean);
+        drawParticles(cx, cy, brainSize, particlesFlow * mix.particles * intensity, synapses * mix.synapses, mode);
+        drawHemisphereContours(cx, cy, brainSize, lineFine, halo * intensity, mix.contour);
+        drawOrganicLines(cx, cy, brainSize, lineFine, mix.contour);
+        drawMandala(cx, cy, brainSize, rot, mandala * mix.mandala, lineFine);
+        drawBrainImage(cx, cy, brainSize, Math.sin(t * 0.45) * 0.012 * rot, halo * intensity, mix.brain);
+        drawMidline(cx, cy, brainSize, lineFine, centerClean * mix.center);
+        drawCore(cx, cy, brainSize, centerClean, mix.center * intensity);
+        drawRays(cx, cy, brainSize, mix.rays * halo * intensity, lineFine);
       }
 
       img.onload = frame;
