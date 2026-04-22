@@ -1,42 +1,370 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cerveau Vivant — Helios Astro</title>
+  <meta name="description" content="Logiciel animé Helios Astro : cerveau vivant, diffusion lumineuse, réseau synaptique et vibration géométrique." />
+  <link rel="icon" href="assets/logo-heliosastro.png" />
 
-<title>Cerveau Vivant — Helios Astro</title>
+  <style>
+    :root{
+      --bg:#03060d;
+      --bg2:#091427;
+      --line:rgba(255,255,255,.08);
+      --text:#f4f7ff;
+      --muted:#c7d5ff;
+    }
 
-<style>
-body{
-  margin:0;
-  background:black;
-  color:white;
-  text-align:center;
-  font-family:Arial;
-}
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      color:var(--text);
+      font-family:Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 50% 25%, rgba(60,120,255,.16), transparent 30%),
+        radial-gradient(circle at 50% 85%, rgba(0,210,255,.1), transparent 30%),
+        linear-gradient(180deg, #02040a 0%, #08111f 55%, #02040a 100%);
+      overflow-x:hidden;
+    }
 
-.container{
-  padding:50px;
-}
+    canvas#stars{
+      position:fixed;
+      inset:0;
+      width:100%;
+      height:100%;
+      z-index:-2;
+    }
 
-img{
-  max-width:700px;
-  width:100%;
-  border-radius:20px;
-}
-</style>
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter:blur(14px);
+      background:rgba(5,8,18,.5);
+      border-bottom:1px solid var(--line);
+    }
 
+    .nav{
+      max-width:1280px;
+      margin:0 auto;
+      padding:14px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .brand img{
+      width:46px;
+      height:46px;
+      border-radius:50%;
+      object-fit:cover;
+    }
+
+    .brand span{
+      font-size:1.8rem;
+      font-weight:900;
+    }
+
+    .nav a{
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+      margin-left:18px;
+    }
+
+    .wrap{
+      max-width:1280px;
+      margin:0 auto;
+      padding:42px 20px 90px;
+    }
+
+    h1{
+      margin:0 0 10px;
+      text-align:center;
+      font-size:clamp(2.2rem, 5vw, 4rem);
+    }
+
+    .sub{
+      text-align:center;
+      color:var(--muted);
+      max-width:900px;
+      margin:0 auto 26px;
+      line-height:1.6;
+      font-size:1.05rem;
+    }
+
+    .brain-stage{
+      position:relative;
+      min-height:74vh;
+      border-radius:32px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
+      background:
+        radial-gradient(circle at 50% 80%, rgba(40,110,255,.16), transparent 35%),
+        rgba(255,255,255,.03);
+      box-shadow:0 30px 80px rgba(0,0,0,.35);
+    }
+
+    #brainFull{
+      width:100%;
+      height:74vh;
+      display:block;
+    }
+
+    .legend{
+      margin-top:22px;
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+    }
+
+    .legend-card{
+      padding:18px;
+      border-radius:22px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .legend-card h3{
+      margin:0 0 8px;
+      font-size:1.2rem;
+    }
+
+    .legend-card p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.55;
+    }
+
+    @media (max-width:900px){
+      .legend{grid-template-columns:1fr}
+      #brainFull{height:58vh}
+    }
+  </style>
 </head>
-
 <body>
+  <canvas id="stars"></canvas>
 
-<div class="container">
-<h1>Cerveau Vivant</h1>
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <img src="assets/logo-heliosastro.png" alt="Logo Helios Astro" />
+        <span>HELIOS ASTRO</span>
+      </div>
 
-<img src="assets/brain.png" alt="Cerveau vivant">
+      <div>
+        <a href="index.html#livre">Le livre</a>
+        <a href="index.html#logo-cerveau">Logo & cerveau</a>
+        <a href="index.html#ultime">Cerveau ultime</a>
+      </div>
+    </div>
+  </header>
 
-<p>Version immersive du système Helios Astro.</p>
-</div>
+  <main class="wrap">
+    <h1>Cerveau vivant</h1>
+    <p class="sub">
+      Version logicielle animée : circulation lumineuse, diffusion synaptique,
+      impulsions centrales et résonance géométrique.
+    </p>
 
+    <section class="brain-stage">
+      <canvas id="brainFull"></canvas>
+    </section>
+
+    <section class="legend">
+      <div class="legend-card">
+        <h3>Diffusion</h3>
+        <p>La lumière part du centre, se propage en réseaux orbitaux et structure l’ensemble de la forme vivante.</p>
+      </div>
+      <div class="legend-card">
+        <h3>Synapses</h3>
+        <p>Les lignes interconnectées donnent la sensation d’un cerveau en activité, vibrant et intelligent.</p>
+      </div>
+      <div class="legend-card">
+        <h3>Rosaces vivantes</h3>
+        <p>Les rosaces assemblées composent une matrice animée qui donne vie au cerveau et à sa dynamique cosmique.</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Étoiles fond
+    (() => {
+      const canvas = document.getElementById('stars');
+      const ctx = canvas.getContext('2d');
+      let w=0, h=0, stars=[];
+
+      function resize(){
+        w = canvas.width = innerWidth;
+        h = canvas.height = innerHeight;
+        stars = Array.from({length: Math.min(240, Math.floor(w*h/9000))}, () => ({
+          x: Math.random()*w,
+          y: Math.random()*h,
+          r: Math.random()*1.5+.2,
+          a: Math.random()*.7+.2,
+          s: Math.random()*.3+.03
+        }));
+      }
+
+      function draw(){
+        ctx.clearRect(0,0,w,h);
+        for(const st of stars){
+          st.y += st.s;
+          if(st.y > h) st.y = -4;
+          ctx.beginPath();
+          ctx.arc(st.x, st.y, st.r, 0, Math.PI*2);
+          ctx.fillStyle = `rgba(255,255,255,${st.a})`;
+          ctx.fill();
+        }
+        requestAnimationFrame(draw);
+      }
+
+      resize();
+      addEventListener('resize', resize);
+      draw();
+    })();
+
+    function setup(canvas){
+      const rect = canvas.getBoundingClientRect();
+      const ratio = Math.max(1, devicePixelRatio || 1);
+      canvas.width = rect.width * ratio;
+      canvas.height = rect.height * ratio;
+      const ctx = canvas.getContext('2d');
+      ctx.setTransform(ratio,0,0,ratio,0,0);
+      return { ctx, w: rect.width, h: rect.height };
+    }
+
+    function glow(ctx,x,y,r,c1,c2='rgba(0,0,0,0)'){
+      const g = ctx.createRadialGradient(x,y,0,x,y,r);
+      g.addColorStop(0,c1);
+      g.addColorStop(1,c2);
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.arc(x,y,r,0,Math.PI*2);
+      ctx.fill();
+    }
+
+    (() => {
+      const canvas = document.getElementById('brainFull');
+      const ctx = canvas.getContext('2d');
+      let w=0, h=0, t=0;
+
+      function resize(){
+        const fit = setup(canvas);
+        w = fit.w;
+        h = fit.h;
+      }
+
+      function draw(){
+        t += 0.01;
+        ctx.clearRect(0,0,w,h);
+
+        const cx = w/2;
+        const cy = h/2;
+        const base = Math.min(w,h)*0.16;
+
+        glow(ctx, cx, cy, Math.min(w,h)*0.46, 'rgba(60,120,255,.12)');
+        glow(ctx, cx, cy, Math.min(w,h)*0.24, 'rgba(0,220,255,.1)');
+
+        ctx.save();
+        ctx.translate(cx, cy);
+
+        // Rosaces
+        for(let L=0; L<9; L++){
+          const ringR = base + L*base*0.28;
+          const count = 12 + L*2;
+          const petal = base*(1.08 - L*0.06);
+
+          for(let i=0; i<count; i++){
+            const a = (Math.PI*2/count)*i + t*(L%2===0 ? .55 : -.32);
+            const x = Math.cos(a)*ringR;
+            const y = Math.sin(a)*ringR;
+            ctx.beginPath();
+            ctx.arc(x,y,petal,0,Math.PI*2);
+            ctx.strokeStyle = `rgba(${70+L*18}, ${175+L*7}, 255, ${Math.max(.025, .11-L*.01)})`;
+            ctx.lineWidth = 1.1;
+            ctx.stroke();
+
+            const pulse = (Math.sin(t*5 + i + L) + 1)*.5;
+            glow(ctx, x, y, 6 + pulse*10, L%2 ? 'rgba(255,215,120,.22)' : 'rgba(110,220,255,.28)');
+          }
+        }
+
+        // Réseau synaptique dense
+        const nodes = 34;
+        const pts = [];
+        for(let i=0; i<nodes; i++){
+          const a = (Math.PI*2/nodes)*i + t*0.28;
+          const rr = base*2.3 + Math.sin(t*1.8+i)*base*0.6;
+          pts.push({
+            x: Math.cos(a)*rr,
+            y: Math.sin(a)*rr
+          });
+        }
+
+        for(let i=0; i<pts.length; i++){
+          const p1 = pts[i];
+          const p2 = pts[(i+5)%pts.length];
+          const p3 = pts[(i+11)%pts.length];
+
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.quadraticCurveTo(0,0,p2.x,p2.y);
+          ctx.strokeStyle = 'rgba(120,210,255,.13)';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.quadraticCurveTo(0,0,p3.x,p3.y);
+          ctx.strokeStyle = 'rgba(255,215,120,.09)';
+          ctx.lineWidth = .95;
+          ctx.stroke();
+        }
+
+        // Noyau
+        for(let i=0; i<20; i++){
+          const a = (Math.PI*2/20)*i - t*1.2;
+          const rr = base*(0.58 + (i%4)*0.05) + Math.sin(t*4+i)*5;
+          const x = Math.cos(a)*rr;
+          const y = Math.sin(a)*rr;
+          glow(ctx,x,y,8,'rgba(255,255,255,.28)');
+          glow(ctx,x,y,15, i%2 ? 'rgba(255,220,120,.16)' : 'rgba(0,220,255,.16)');
+        }
+
+        // Mandibules / structure basse
+        for(let s of [-1,1]){
+          ctx.beginPath();
+          ctx.moveTo(s*base*0.4, base*1.35);
+          ctx.quadraticCurveTo(s*base*1.0, base*1.8 + Math.sin(t*3)*10, s*base*1.55, base*2.2);
+          ctx.strokeStyle = 'rgba(130,220,255,.18)';
+          ctx.lineWidth = 1.25;
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.moveTo(s*base*0.2, base*1.2);
+          ctx.quadraticCurveTo(s*base*0.7, base*1.6 + Math.cos(t*3)*8, s*base*1.2, base*1.95);
+          ctx.strokeStyle = 'rgba(255,220,120,.15)';
+          ctx.lineWidth = 1.1;
+          ctx.stroke();
+        }
+
+        ctx.restore();
+        requestAnimationFrame(draw);
+      }
+
+      resize();
+      addEventListener('resize', resize);
+      draw();
+    })();
+  </script>
 </body>
 </html>
