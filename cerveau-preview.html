@@ -1,144 +1,54 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cerveau Preview</title>
-<style>
-  html, body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: #000;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aperçu Cerveau Vivant — Helios Astro</title>
+  <style>
+    body{
+      margin:0;
+      background:#05070d;
+      color:#fff;
+      font-family:Arial, Helvetica, sans-serif;
+      display:grid;
+      place-items:center;
+      min-height:100vh;
+    }
 
-  canvas {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-</style>
+    .wrap{
+      width:min(94vw, 980px);
+      padding:22px;
+      border-radius:28px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 20px 80px rgba(0,0,0,.35);
+      text-align:center;
+    }
+
+    img{
+      width:min(100%, 700px);
+      border-radius:24px;
+      display:block;
+      margin:0 auto 18px;
+    }
+
+    a{
+      display:inline-block;
+      text-decoration:none;
+      padding:14px 22px;
+      border-radius:999px;
+      background:linear-gradient(90deg,#9fdcff,#76c1ff,#f2d37a);
+      color:#07101e;
+      font-weight:800;
+    }
+  </style>
 </head>
 <body>
-<canvas id="view"></canvas>
-
-<script>
-(() => {
-  const canvas = document.getElementById('view');
-  const ctx = canvas.getContext('2d');
-  const DPR = Math.min(window.devicePixelRatio || 1, 2);
-  let w = 0, h = 0, t = 0;
-
-  function resize() {
-    const rect = canvas.getBoundingClientRect();
-    w = canvas.width = Math.floor(rect.width * DPR);
-    h = canvas.height = Math.floor(rect.height * DPR);
-  }
-
-  window.addEventListener('resize', resize);
-  resize();
-
-  function glow(x, y, r, c, a) {
-    const g = ctx.createRadialGradient(x, y, 0, x, y, r);
-    g.addColorStop(0, `rgba(${c[0]},${c[1]},${c[2]},${a})`);
-    g.addColorStop(1, `rgba(${c[0]},${c[1]},${c[2]},0)`);
-    ctx.fillStyle = g;
-    ctx.beginPath();
-    ctx.arc(x, y, r, 0, Math.PI * 2);
-    ctx.fill();
-  }
-
-  function drawBrain(cx, cy, R, time) {
-    ctx.save();
-    ctx.translate(cx, cy);
-    ctx.rotate(time * 0.02);
-
-    for (let ring = 1; ring <= 8; ring++) {
-      const rr = R * (ring / 8);
-      const petals = 10 + ring * 5;
-
-      for (let i = 0; i < petals; i++) {
-        const a = i / petals * Math.PI * 2;
-        const x = Math.cos(a) * rr * 1.08;
-        const y = Math.sin(a) * rr * 0.85;
-
-        ctx.strokeStyle = `rgba(${90 + ring * 15},${180 + ring * 6},255,0.08)`;
-        ctx.lineWidth = 1.1 * DPR;
-        ctx.beginPath();
-        ctx.ellipse(x, y, rr * 0.16, rr * 0.08, a + time * 0.025, 0, Math.PI * 2);
-        ctx.stroke();
-      }
-    }
-
-    const nodes = 46;
-    const pts = [];
-    for (let i = 0; i < nodes; i++) {
-      const a = i / nodes * Math.PI * 2 + time * 0.08;
-      const rx = R * (0.2 + (i % 9) * 0.065) * 1.12;
-      const ry = R * (0.2 + (i % 9) * 0.05) * 0.84;
-      pts.push([
-        Math.cos(a + i * 0.1) * rx,
-        Math.sin(a - i * 0.08) * ry
-      ]);
-    }
-
-    for (let i = 0; i < pts.length; i++) {
-      for (let j = i + 1; j < pts.length; j++) {
-        const dx = pts[i][0] - pts[j][0];
-        const dy = pts[i][1] - pts[j][1];
-        const d = Math.hypot(dx, dy);
-
-        if (d < R * 0.5) {
-          ctx.strokeStyle = `rgba(120,220,255,0.04)`;
-          ctx.lineWidth = 0.8 * DPR;
-          ctx.beginPath();
-          ctx.moveTo(pts[i][0], pts[i][1]);
-          ctx.lineTo(pts[j][0], pts[j][1]);
-          ctx.stroke();
-        }
-      }
-    }
-
-    pts.forEach((p, idx) => {
-      glow(p[0], p[1], 8 * DPR, [60,160,255], 0.16);
-      glow(p[0], p[1], 3 * DPR, [255,240,120], 0.75 * (0.4 + 0.6 * Math.sin(time * 2 + idx)));
-    });
-
-    glow(0, 0, R * 0.75, [0,255,220], 0.05);
-    glow(0, 0, R * 0.3, [0,120,255], 0.25);
-    glow(0, 0, R * 0.1, [255,255,255], 0.95);
-
-    ctx.restore();
-  }
-
-  function frame() {
-    requestAnimationFrame(frame);
-    t += 0.016;
-
-    ctx.clearRect(0, 0, w, h);
-    ctx.fillStyle = "#000";
-    ctx.fillRect(0, 0, w, h);
-
-    const cx = w * 0.5;
-    const cy = h * 0.5;
-    const R = Math.min(w, h) * 0.28;
-
-    for (let i = 0; i < 5; i++) {
-      glow(
-        cx + Math.sin(t * 0.4 + i) * 25 * DPR,
-        cy + Math.cos(t * 0.35 + i) * 18 * DPR,
-        R * (0.85 + i * 0.18),
-        [0,120,255],
-        0.012
-      );
-    }
-
-    drawBrain(cx, cy, R, t);
-  }
-
-  frame();
-})();
-</script>
+  <div class="wrap">
+    <img src="assets/brain.png" alt="Aperçu cerveau vivant">
+    <h1>Cerveau vivant — aperçu</h1>
+    <p>Accédez à la version animée complète du cerveau vivant.</p>
+    <a href="cerveau.html">Ouvrir le logiciel animé</a>
+  </div>
 </body>
 </html>
